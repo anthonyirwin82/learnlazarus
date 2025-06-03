@@ -1,0 +1,27 @@
+<div class="card mb-3" style="max-width: 800px;">
+   <div class="row g-0">
+      {% if include.img %}
+      <div class="col-md-4">
+         <img src="{{ include.img }}" class="img-fluid rounded-start" alt="{{ include.title }} book cover">
+      </div>
+      {% endif %}
+      <div class="{% if include.img %}col-md-8{% else %}col-md-12{% endif %}">
+      <div class="card-body">
+         <h5 class="card-title">{{ include.title }}</h5>
+         <p class="card-text">{{ include.description }}</p>
+         <div class="d-flex justify-content-center">
+            {% if include.book_btn %}
+            <a href="{{ include.book_btn }}" target="_blank" class="btn btn-primary me-2">Download Book</a>
+            {% endif %}
+            {% if include.examples_btn %}
+            <a href="{{ include.examples_btn }}" target="_blank" class="btn btn-success me-2">Download Examples</a>
+            {% endif %}
+            {% if include.author_website %}
+            <a href="{{ include.author_website}}" class="btn btn-info me-2">Author Website</a>
+            {% endif %}
+         </div>
+      </div>
+      </div>
+   </div>
+</div>
+

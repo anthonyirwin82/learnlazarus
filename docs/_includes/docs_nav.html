@@ -1,0 +1,44 @@
+<h3 class="my-4">📂 Documentation</h3>
+
+<div class="accordion" id="docsAccordion">
+
+  {% assign docs_by_dir = site.docs | group_by_exp: "doc", "doc.path | split: '/' | slice: 1, 1 | join: ''" %}
+
+  {% comment %}
+  Sort the docs_by_dir array according to order in docs_dirs.yml data
+  {% endcomment %}
+  {% assign ordered_dirs = site.data.docs_dirs | sort: "order" %}
+
+  {% for dir_meta in ordered_dirs %}
+    {% assign dir_name = dir_meta.name %}
+    {% assign dir_title = dir_meta.title %}
+    {% assign dir_id = dir_name | slugify %}
+
+    {% assign group = docs_by_dir | where: "name", dir_name | first %}
+    {% if group %}
+      {% assign sorted_docs = group.items | sort: "order" %}
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="heading-{{ dir_id }}">
+          <button class="accordion-button {% unless forloop.first %}collapsed{% endunless %}" type="button"
+            data-bs-toggle="collapse" data-bs-target="#collapse-{{ dir_id }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse-{{ dir_id }}">
+            📁 {{ dir_title }}
+          </button>
+        </h2>
+        <div id="collapse-{{ dir_id }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading-{{ dir_id }}" data-bs-parent="#docsAccordion">
+          <div class="accordion-body">
+            <ul class="list-unstyled">
+              {% for doc in sorted_docs %}
+                <li>📄 <a href="{{ doc.url }}">{{ doc.title | default: doc.basename }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+</div>
+
+
+

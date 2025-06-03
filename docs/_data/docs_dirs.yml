@@ -1,0 +1,6 @@
+- name: getting-started
+  title: Getting Started
+  order: 1
+- name: contributing-to-learn-lazarus
+  title: Contributing to Learn Lazarus
+  order: 2
