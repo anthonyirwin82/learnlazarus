@@ -24,11 +24,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-target-blank
 
-# make github pages include the content
-include:
-  - _docs
-  - _posts
-
 exclude:
   - Gemfile
   - Gemfile.lock
