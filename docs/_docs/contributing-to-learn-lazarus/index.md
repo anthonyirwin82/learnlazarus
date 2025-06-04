@@ -14,6 +14,8 @@ By making it as easy as possible to contribute I hope that as this site grows it
 
 The entire source code is available on github at [{{ site.git_address }}]({{ site.git_address }}) and the website is in the docs directory and uses [Jekyll](https://jekyllrb.com/) to generate the website.
 
+{{ site.title }} has a custom Github Actions Workflow that builds Jekyll and does not use the older and restricted Github Pages Jekyll. This allows us to use the latest version of Jekyll and run any Jekyll Plugin without issues.
+
 You can fork the {{ site.title }} github repository at [{{ site.git_address }}]({{ site.git_address }}) make changes on your repository and make a pull request to submit the changes back.
 
 Information contributed to the github repository will be licensed under the {{ site.license }}.
