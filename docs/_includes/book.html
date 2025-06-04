@@ -8,6 +8,7 @@
       <div class="{% if include.img %}col-md-8{% else %}col-md-12{% endif %}">
       <div class="card-body">
          <h5 class="card-title">{{ include.title }}</h5>
+         <p class="card-text"><small>By {{ include.author }}</small></p>
          <p class="card-text">{{ include.description }}</p>
          <div class="d-flex justify-content-center">
             {% if include.book_btn %}
