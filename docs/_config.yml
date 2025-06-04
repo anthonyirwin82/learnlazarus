@@ -1,6 +1,8 @@
 # Site settings
 title: Learn Lazarus
+author: Anthony Irwin
 email: anthony@learnlazarus.com
+license: "Creative Commons Attribution-ShareAlike 4.0 International License"
 description: >
   Website dedicated to helping new users learn about the Lazarus IDE and the Free Pascal 
   programming language.
