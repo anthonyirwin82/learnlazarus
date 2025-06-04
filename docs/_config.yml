@@ -1,7 +1,5 @@
 # Site settings
 title: Learn Lazarus
-author: Anthony Irwin
-email: anthony@learnlazarus.com
 license: "Creative Commons Attribution-ShareAlike 4.0 International License"
 description: >
   Website dedicated to helping new users learn about the Lazarus IDE and the Free Pascal 
@@ -23,6 +21,8 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-target-blank
+  - jekyll-paginate-v2
+  - jekyll-auto-authors
 
 exclude:
   - Gemfile
@@ -50,13 +50,66 @@ defaults:
     seo:
       type: "WebPage"
 
+- scope:
+    path: _pages
+    type: pages
+  values:
+    layout: page
+    sectionid: pages
+    seo:
+      type: "WebPage"
+
 collections:
   docs:
     permalink: /docs/:path/
     output: true
+  pages:
+    permalink: /:title/
+    output: true
   posts:
     permalink: /blog/:title/
     output: true
+
+# for jekyll-paginate-v2 and jekyll-auto-authors
+pagination:
+  enabled: true
+  collection: 'posts'
+  per_page: 10
+  # Limit how many pagenated pages to create (default: 0, means all)
+  limit: 0
+  permalink: '/page/:num/'
+  title: ':title - page :num'
+  sort_field: 'date'
+  sort_reverse: true
+  indexpage: 'index'
+  # Allow legacy pagination to work on things that use it.
+  paginate: 10
+  paginate_path: "/legacy/page:num/"
+
+autopages:
+
+  # Other autopage configs stay the same
+  enabled: true
+
+  categories:
+    enabled: false
+  tags:
+    enabled: false
+  collections:
+    enabled: true
+
+  authors:
+    enabled: true
+    data: '_data/authors.yml'
+    # Uncomment the line below to force exclude certain author usernames from autopage generation.
+    # exclude: [ "author1", "author2" ]
+    layouts: 
+      - 'author.html'
+    title: 'Posts by :author'
+    permalink: '/author/:author/'
+    slugify:
+      mode: 'default' # choose from [raw, default, pretty, ascii or latin]
+      cased: true # if true, the uppercase letters in slug will be converted to lowercase ones.
 
 jekyll-spaceship:
   # default enabled processors
