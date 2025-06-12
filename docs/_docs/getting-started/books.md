@@ -1,7 +1,7 @@
 ---
 title: Books
 permalink: /docs/getting-started/books/
-order: 2
+order: 3
 ---
 This section will have a collection of both free and paid books that can help you learn Object Pascal and the Lazarus IDE.
 
